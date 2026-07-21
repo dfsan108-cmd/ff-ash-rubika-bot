@@ -3,7 +3,7 @@ import time
 from threading import Thread
 from flask import Flask
 import rubika
-
+print(dir(rubika))
 app = Flask(__name__)
 
 @app.route("/")
