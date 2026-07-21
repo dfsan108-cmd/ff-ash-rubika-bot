@@ -1,15 +1,33 @@
-from rubika import Bot
+import requests
+import time
 
 TOKEN = "BJJAIF0JEDWPSZVCWUOSLABHINYJFZWCQVZVEYJJLDRVMXGINJHGUJASVIFEUMUN"
 
-bot = Bot(TOKEN)
+def send_message(chat_id, text):
+    url = f"https://botapi.rubika.ir/v3/{TOKEN}/sendMessage"
+    requests.post(url, json={
+        "chat_id": chat_id,
+        "text": text
+    })
 
-@bot.on_message()
-def handler(bot, message):
-    if message.text == "/start":
-        bot.send_message(
-            message.chat_id,
-            "🎮 سلام\nبه ربات FF ASH Tournament خوش آمدید"
-        )
+offset = 0
 
-bot.run()
+while True:
+    url = f"https://botapi.rubika.ir/v3/{TOKEN}/getUpdates"
+    data = requests.get(url, params={"offset": offset}).json()
+
+    for update in data.get("data", {}).get("updates", []):
+        offset = update["update_id"] + 1
+
+        message = update.get("message")
+        if message:
+            text = message.get("text")
+            chat_id = message["chat_id"]
+
+            if text == "/start":
+                send_message(
+                    chat_id,
+                    "🎮 سلام\nبه ربات FF ASH Tournament خوش آمدید!"
+                )
+
+    time.sleep(2)
