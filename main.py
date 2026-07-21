@@ -14,9 +14,11 @@ offset = 0
 
 while True:
     url = f"https://botapi.rubika.ir/v3/{TOKEN}/getUpdates"
+    
     r = requests.get(url, params={"offset": offset})
-print(r.text)
-data = r.json()
+    print(r.text)
+    
+    data = r.json()
 
     for update in data.get("data", {}).get("updates", []):
         offset = update["update_id"] + 1
