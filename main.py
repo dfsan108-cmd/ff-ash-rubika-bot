@@ -14,24 +14,12 @@ offset = 0
 
 while True:
     url = f"https://botapi.rubika.ir/v3/{TOKEN}/getUpdates"
-    
+
     r = requests.get(url, params={"offset": offset})
-    print(r.text)
-    
-    data = r.json()
 
-    for update in data.get("data", {}).get("updates", []):
-        offset = update["update_id"] + 1
+    print("STATUS:", r.status_code)
+    print("TEXT:", r.text)
 
-        message = update.get("message")
-        if message:
-            text = message.get("text")
-            chat_id = message["chat_id"]
+    time.sleep(10)
 
-            if text == "/start":
-                send_message(
-                    chat_id,
-                    "🎮 سلام\nبه ربات FF ASH Tournament خوش آمدید!"
-                )
-
-    time.sleep(2)
+        
