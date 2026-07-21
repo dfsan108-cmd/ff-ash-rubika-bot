@@ -1,3 +1,3 @@
-import rubika_bot
+import rubika
 
-print(dir(rubika_bot))
+print(dir(rubika))
