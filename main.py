@@ -1,1 +1,2 @@
-print("ربات اجرا شد")
+while True:
+    print("FFASHBot Online")
