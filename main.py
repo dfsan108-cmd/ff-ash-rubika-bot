@@ -13,7 +13,7 @@ players = []
 def home():
     return "FFASH Bot Online"
 
-@app.route("/webhook", methods=["POST"])
+@app.route("/webhook", methods=["GET","POST"])
 def webhook():
     print("WEBHOOK CALLED")
 
