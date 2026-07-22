@@ -1,6 +1,8 @@
 from flask import Flask, request
 import os
+import rubika_bot
 
+print("RUBIKA BOT FILE:", dir(rubika_bot))
 app = Flask(__name__)
 
 TOKEN = os.getenv("BOT_TOKEN")
