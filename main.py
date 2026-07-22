@@ -1,4 +1,12 @@
-import rubika_bot
+from flask import Flask
+import os
 
-print("VERSION:", getattr(rubika_bot, "__version__", "unknown"))
-print("DIR:", dir(rubika_bot))
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "FFASH Rubika Bot Online"
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
