@@ -15,14 +15,17 @@ def webhook():
 
     print("NEW UPDATE:", data)
 
-    players.append(data)
+    if data:
+        players.append(data)
 
-    return {"status": "ok"}
+    return "OK"
 
 @app.route("/players")
-def show_players():
-    return {"count": len(players), "players": players}
+def get_players():
+    return {
+        "تعداد": len(players),
+        "بازیکنان": players
+    }
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
