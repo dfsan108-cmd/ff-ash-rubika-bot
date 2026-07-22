@@ -4,6 +4,7 @@ import os
 app = Flask(__name__)
 
 TOKEN = os.getenv("BOT_TOKEN")
+print("TOKEN:", TOKEN[:5] if TOKEN else "NO TOKEN")
 print("Token Loaded:", TOKEN is not None)
 
 players = []
