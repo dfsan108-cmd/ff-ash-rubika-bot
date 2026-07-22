@@ -9,7 +9,7 @@ data = {
     "url": "https://ff-ash-rubika-bot-2.onrender.com/webhook"
 }
 
-r = requests.post(url, json=data)
+r = requests.post(url, data=data)
 
 print(r.status_code)
 print(r.text)
