@@ -15,9 +15,11 @@ def home():
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
-    data = request.json
+    print("WEBHOOK CALLED")
 
-    print("NEW UPDATE:", data)
+    data = request.get_json()
+
+    print("DATA:", data)
 
     if data:
         players.append(data)
