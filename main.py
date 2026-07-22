@@ -8,17 +8,7 @@ TOKEN = os.getenv("BOT_TOKEN")
 print("Token Loaded:", TOKEN is not None)
 
 players = []
-from rubika_bot import Bot
 
-bot = Bot(TOKEN)
-
-@bot.on_message()
-def handle_message(message):
-    print("MESSAGE:", message)
-
-    players.append({
-        "message": message
-    })
 @app.route("/")
 def home():
     return "FFASH Bot Online"
@@ -44,10 +34,6 @@ def get_players():
     }
 
 if __name__ == "__main__":
-    import threading
-
-    threading.Thread(target=bot.run).start()
-
     app.run(
         host="0.0.0.0",
         port=int(os.environ.get("PORT", 5000))
