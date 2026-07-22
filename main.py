@@ -17,7 +17,7 @@ def home():
 def webhook():
     print("WEBHOOK CALLED")
 
-    data = request.get_json()
+    data = request.get_json(silent=True)
 
     print("DATA:", data)
 
